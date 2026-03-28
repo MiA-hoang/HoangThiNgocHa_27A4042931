@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <p>Nhap ho ten:</p>
+    <input id="fullName">
+    <p>Nhap ma sinh vien:</p>
+    <input id="studentId">
+    <br><br>
+    <button onclick="xuLy()">OK</button>
+
+    <p id="kq"></p>
+    <script>
+    function xuLy() {
+        let fullName = document.getElementById("fullName").value.toLowerCase();
+        let studentId = document.getElementById("studentId").value.toLowerCase();
+        while (fullName[fullName.length - 1] == " ") {
+            fullName = fullName.substring(0, fullName.length - 1);
+        }
+        let ten = fullName.substring(fullName.lastIndexOf(" ") + 1);
+        let ho = fullName[0];
+        let dem = "";
+        let viTri = fullName.indexOf(" ");
+        if (viTri != fullName.lastIndexOf(" ")) {
+            dem = fullName[viTri + 1];
+        }
+        let email = ten + ho + dem + "." + studentId + "@hvnh.edu.vn";
+        let coursePeriod = studentId.substring(0, 2);
+        let faculty = "";
+        if (studentId.includes("404")) {
+            faculty = "Khoa Cong nghe thong tin va Kinh te so";
+        } else {
+            faculty = "Khoa khac";
+        }
+        let sum = 0;
+        sum += Number(studentId[studentId.length - 1]);
+        sum += Number(studentId[studentId.length - 2]);
+        sum += Number(studentId[studentId.length - 3]);
+        sum += Number(studentId[studentId.length - 4]);
+        document.getElementById("kq").innerHTML =
+            "Email: " + email + "<br>" +"Xin chào " + fullName +", bạn là sinh viên khóa " + coursePeriod +", khoa " + faculty + ", tổng 4 số cuối trong mã sinh viên là " + sum;
+    }
+    </script>
+    </body>
+</html>
