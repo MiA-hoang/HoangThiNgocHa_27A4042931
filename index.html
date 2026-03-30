@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>btvn buổi 9</title>
+    </head>
+    <body>
+        <p id="introduce"></p>
+        <script>
+            let fullName = "Hoang Thi Ngoc Ha", studentId ="27A4042931";
+            let coursePeriod = "K27";
+            let faculty = "Công nghệ thông tin và kinh tế số";
+            let introduce="";
+            let start = 0, sum = 0;
+            for (let index =  studentId.length-1; index >= studentId.length - 4; index--) {
+                sum += Number(studentId[index]);
+            }
+            introduce = "Xin chào "+fullName+", bạn là sinh viên khóa "+ coursePeriod
+            +", khoa "+ faculty+", tổng 4 số cuối trong mã sinh viên là "+sum+". Email là: "+taoEmail();
+            document.getElementById("introduce").innerText = introduce;
+
+            function taoEmail(){
+                let email="";
+                for (let index = fullName.length-1; index >= 0; index--) {
+                if(fullName[index] == ' '){
+                    start = index;
+                    for (let i = start + 1; i < fullName.length; i++) {
+                        email += fullName[i];
+                    }
+                break;
+                }
+            }
+                for (let index = 0; index < fullName.length; index++) {
+                    if(index == 0){
+                        email += fullName[index];
+                    }
+                    if(fullName[index]==' ' && index < start){
+                        email += fullName[index+1];
+                    }
+                } 
+                email = email.toLowerCase();
+                email += "."+studentId+"@hvnh.edu.vn";
+                return email;
+            }
+        </script>
+    </body>
+</html>
